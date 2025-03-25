@@ -8,7 +8,6 @@ import { AnimatePresence } from 'framer-motion';
 import Index from "./pages/Index";
 import Products from "./pages/Products";
 import About from "./pages/About";
-import CakeBuilder from "./pages/CakeBuilder";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
@@ -32,7 +31,6 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/products" element={<Products />} />
               <Route path="/about" element={<About />} />
-              <Route path="/cake-builder" element={<CakeBuilder />} />
               <Route path="/carrinho" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="*" element={<NotFound />} />

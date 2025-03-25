@@ -18,7 +18,14 @@ const ProductCard = ({ id = Math.floor(Math.random() * 1000), image, title, desc
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({ id, image, title, description, price, category });
+    addToCart({ 
+      id, 
+      image, 
+      title, 
+      price, 
+      category, 
+      quantity: 1 
+    });
     
     toast({
       title: "Produto adicionado!",

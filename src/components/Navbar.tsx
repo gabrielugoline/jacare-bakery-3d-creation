@@ -27,7 +27,6 @@ const Navbar = () => {
     { path: '/', label: 'Início' },
     { path: '/products', label: 'Produtos' },
     { path: '/about', label: 'Sobre Nós' },
-    { path: '/cake-builder', label: 'Monte seu Bolo' },
   ];
 
   return (
