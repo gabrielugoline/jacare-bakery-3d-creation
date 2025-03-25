@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 
 // Cake Layer Component
 const CakeLayer = ({ position, radius, height, color, texture }) => {
-  const meshRef = useRef();
+  const meshRef = useRef<THREE.Mesh>();
   const textureMap = texture ? useTexture(texture) : null;
   
   useFrame(() => {
@@ -22,7 +22,7 @@ const CakeLayer = ({ position, radius, height, color, texture }) => {
       <cylinderGeometry args={[radius, radius, height, 64]} />
       <meshStandardMaterial 
         color={color} 
-        map={textureMap} 
+        map={textureMap || undefined} 
         roughness={0.3} 
         metalness={0.1}
       />
@@ -32,8 +32,10 @@ const CakeLayer = ({ position, radius, height, color, texture }) => {
 
 // Topping Component
 const Topping = ({ position, scale, rotation, model }) => {
+  const meshRef = useRef<THREE.Mesh>();
+  
   return (
-    <mesh position={position} scale={scale} rotation={rotation}>
+    <mesh position={position} scale={scale} rotation={rotation} ref={meshRef}>
       <sphereGeometry args={[0.3, 16, 16]} />
       <meshStandardMaterial color="#FF3366" />
     </mesh>
@@ -42,7 +44,7 @@ const Topping = ({ position, scale, rotation, model }) => {
 
 // Main Cake Component
 const Cake = ({ layers, toppings, frosting }) => {
-  const group = useRef();
+  const group = useRef<THREE.Group>();
   
   useFrame(() => {
     if (group.current) {

@@ -37,14 +37,16 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: i * 0.2 }}
-            className="absolute inset-0 h-full w-full object-cover"
+            className={`absolute inset-0 h-full w-full object-cover hero-img ${i === 0 ? 'block' : 'hidden'}`}
             style={{ 
               zIndex: 5 - i,
-              display: i === 0 ? 'block' : 'none'
             }}
             onAnimationComplete={() => {
               if (i < heroImages.length - 1) {
-                document.querySelectorAll('.hero-img')[i + 1].style.display = 'block';
+                const elements = document.querySelectorAll('.hero-img');
+                if (elements[i + 1]) {
+                  (elements[i + 1] as HTMLElement).style.display = 'block';
+                }
               }
             }}
           />
@@ -64,7 +66,7 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="inline-block mb-6 px-4 py-1.5 rounded-full bg-bread-crumb text-warm-brown font-medium text-sm"
           >
-            Artisanal Breads & Pastries
+            Pães e Doces Artesanais
           </motion.span>
           
           <motion.h1
@@ -73,8 +75,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-5xl md:text-7xl font-display text-white mb-6 leading-tight"
           >
-            Where Tradition Meets <br />
-            <span className="text-bread-crumb">Sweet Innovation</span>
+            Onde a Tradição Encontra <br />
+            <span className="text-bread-crumb">a Inovação</span>
           </motion.h1>
           
           <motion.p
@@ -83,8 +85,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto"
           >
-            Handcrafted with care using traditional methods and the finest ingredients.
-            Experience the authentic taste of freshly baked goods at Jacaré Padaria.
+            Produtos artesanais feitos com cuidado usando métodos tradicionais e os melhores ingredientes.
+            Experimente o sabor autêntico de produtos recém-assados na Jacaré Padaria.
           </motion.p>
           
           <motion.div
@@ -97,7 +99,7 @@ const Hero = () => {
               to="/products"
               className="px-8 py-3 rounded-md bg-bread-crust text-white font-medium hover:bg-bread-crust/90 transition-colors flex items-center space-x-2"
             >
-              <span>Our Products</span>
+              <span>Nossos Produtos</span>
               <ArrowRight size={16} />
             </Link>
             
@@ -105,7 +107,7 @@ const Hero = () => {
               to="/cake-builder"
               className="px-8 py-3 rounded-md border border-white/60 text-white hover:bg-white/10 transition-colors"
             >
-              Build Your Cake
+              Monte seu Bolo
             </Link>
           </motion.div>
         </motion.div>
@@ -117,7 +119,7 @@ const Hero = () => {
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <div className="flex flex-col items-center">
-            <span className="text-white/70 text-sm mb-2">Scroll to explore</span>
+            <span className="text-white/70 text-sm mb-2">Role para explorar</span>
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
