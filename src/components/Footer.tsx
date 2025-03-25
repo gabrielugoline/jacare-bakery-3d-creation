@@ -53,7 +53,8 @@ const Footer = () => {
                 { title: 'Início', path: '/' },
                 { title: 'Produtos', path: '/products' },
                 { title: 'Sobre Nós', path: '/about' },
-                { title: 'Monte seu Bolo', path: '/cake-builder' }
+                { title: 'Monte seu Bolo', path: '/cake-builder' },
+                { title: 'Carrinho', path: '/carrinho' }
               ].map((link) => (
                 <li key={link.path}>
                   <Link 

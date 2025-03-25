@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import CartButton from './CartButton';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,6 +23,13 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  const navItems = [
+    { path: '/', label: 'Início' },
+    { path: '/products', label: 'Produtos' },
+    { path: '/about', label: 'Sobre Nós' },
+    { path: '/cake-builder', label: 'Monte seu Bolo' },
+  ];
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -40,52 +48,49 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {['/', '/products', '/about', '/cake-builder'].map((path, index) => {
-            const label = path === '/' 
-              ? 'Home' 
-              : path.substring(1).split('-').map(word => 
-                  word.charAt(0).toUpperCase() + word.slice(1)
-                ).join(' ');
-            
-            return (
-              <Link 
-                key={path} 
-                to={path}
-                className="relative group"
+          {navItems.map((item, index) => (
+            <Link 
+              key={item.path} 
+              to={item.path}
+              className="relative group"
+            >
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+                className={`text-sm font-medium ${location.pathname === item.path ? 'text-primary' : 'text-muted-foreground'} transition-colors duration-200 hover:text-primary`}
               >
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.1 * index, duration: 0.5 }}
-                  className={`text-sm font-medium ${location.pathname === path ? 'text-primary' : 'text-muted-foreground'} transition-colors duration-200 hover:text-primary`}
-                >
-                  {label}
-                </motion.span>
-                {location.pathname === path && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  />
-                )}
-                <div className="absolute -bottom-1 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 bg-primary/70 transition-transform duration-300 origin-left" />
-              </Link>
-            );
-          })}
+                {item.label}
+              </motion.span>
+              {location.pathname === item.path && (
+                <motion.div
+                  layoutId="navbar-indicator"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                />
+              )}
+              <div className="absolute -bottom-1 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 bg-primary/70 transition-transform duration-300 origin-left" />
+            </Link>
+          ))}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden relative z-50"
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {isMobileMenuOpen ? (
-            <X className="h-6 w-6 text-foreground" />
-          ) : (
-            <Menu className="h-6 w-6 text-foreground" />
-          )}
-        </button>
+        {/* Cart Button */}
+        <div className="flex items-center">
+          <CartButton />
+          
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden relative z-50 ml-4"
+            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-foreground" />
+            ) : (
+              <Menu className="h-6 w-6 text-foreground" />
+            )}
+          </button>
+        </div>
 
         {/* Mobile Menu */}
         <motion.div
@@ -95,23 +100,18 @@ const Navbar = () => {
           className="fixed inset-0 bg-background/95 backdrop-blur-md md:hidden z-40 flex flex-col"
         >
           <div className="flex flex-col items-center justify-center h-full space-y-8">
-            {['/', '/products', '/about', '/cake-builder'].map((path) => {
-              const label = path === '/' 
-                ? 'Home' 
-                : path.substring(1).split('-').map(word => 
-                    word.charAt(0).toUpperCase() + word.slice(1)
-                  ).join(' ');
-              
-              return (
-                <Link 
-                  key={path} 
-                  to={path}
-                  className={`text-xl font-serif ${location.pathname === path ? 'text-primary' : 'text-muted-foreground'} transition-colors duration-200 hover:text-primary`}
-                >
-                  {label}
-                </Link>
-              );
-            })}
+            {navItems.map((item) => (
+              <Link 
+                key={item.path} 
+                to={item.path}
+                className={`text-xl font-serif ${location.pathname === item.path ? 'text-primary' : 'text-muted-foreground'} transition-colors duration-200 hover:text-primary`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link to="/carrinho" className="text-xl font-serif text-muted-foreground hover:text-primary">
+              Carrinho
+            </Link>
           </div>
         </motion.div>
       </div>

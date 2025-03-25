@@ -5,92 +5,92 @@ import ProductCard from '@/components/ProductCard';
 import { Search, Filter } from 'lucide-react';
 
 const Products = () => {
-  // Product categories
-  const categories = ['All', 'Breads', 'Pastries', 'Cakes', 'Desserts', 'Savory'];
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  // Categorias de produtos
+  const categories = ['Todos', 'Pães', 'Doces', 'Bolos', 'Sobremesas', 'Salgados'];
+  const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  // Products data
+  // Produtos dados
   const allProducts = [
     {
       id: 1,
-      title: 'Sourdough Bread',
-      description: 'Traditional sourdough with a perfectly crispy crust and soft, airy interior',
+      title: 'Pão Sourdough',
+      description: 'Pão sourdough tradicional com uma crosta crocante e interior macio e aerado',
       price: 'R$14,99',
-      category: 'Breads',
+      category: 'Pães',
       image: 'https://images.unsplash.com/photo-1586444248516-60098ca688e1?auto=format&fit=crop&q=80'
     },
     {
       id: 2,
-      title: 'Chocolate Croissant',
-      description: 'Buttery, flaky croissant filled with rich chocolate',
+      title: 'Croissant de Chocolate',
+      description: 'Croissant amanteigado e folhado recheado com chocolate rico',
       price: 'R$8,99',
-      category: 'Pastries',
+      category: 'Doces',
       image: 'https://images.unsplash.com/photo-1530610476181-d83430b64dcd?auto=format&fit=crop&q=80'
     },
     {
       id: 3,
-      title: 'Strawberry Tart',
-      description: 'Sweet pastry crust filled with vanilla cream and topped with fresh strawberries',
+      title: 'Torta de Morango',
+      description: 'Massa doce recheada com creme de baunilha e coberta com morangos frescos',
       price: 'R$12,99',
-      category: 'Desserts',
+      category: 'Sobremesas',
       image: 'https://images.unsplash.com/photo-1488477304112-4944851de03d?auto=format&fit=crop&q=80'
     },
     {
       id: 4,
-      title: 'Cheese Bread',
-      description: 'Traditional Brazilian pão de queijo with a crispy exterior and chewy, cheesy interior',
+      title: 'Pão de Queijo',
+      description: 'Tradicional pão de queijo brasileiro com exterior crocante e interior macio e queijoso',
       price: 'R$5,99',
-      category: 'Breads',
+      category: 'Pães',
       image: 'https://images.unsplash.com/photo-1598233847491-f16487adee2f?auto=format&fit=crop&q=80'
     },
     {
       id: 5,
-      title: 'Chocolate Cake',
-      description: 'Rich chocolate cake with smooth ganache frosting',
+      title: 'Bolo de Chocolate',
+      description: 'Bolo de chocolate rico com cobertura de ganache suave',
       price: 'R$49,99',
-      category: 'Cakes',
+      category: 'Bolos',
       image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80'
     },
     {
       id: 6,
-      title: 'Chicken Pie',
-      description: 'Savory pie filled with tender chicken, vegetables, and creamy sauce',
+      title: 'Empada de Frango',
+      description: 'Empada saborosa recheada com frango suculento, legumes e molho cremoso',
       price: 'R$16,99',
-      category: 'Savory',
+      category: 'Salgados',
       image: 'https://images.unsplash.com/photo-1585325701660-9db1ecaad234?auto=format&fit=crop&q=80'
     },
     {
       id: 7,
       title: 'Cinnamon Roll',
-      description: 'Soft, sweet roll with cinnamon-sugar filling and cream cheese frosting',
+      description: 'Massa doce e macia com recheio de canela e açúcar, coberta com cream cheese',
       price: 'R$9,99',
-      category: 'Pastries',
+      category: 'Doces',
       image: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&q=80'
     },
     {
       id: 8,
-      title: 'French Baguette',
-      description: 'Classic French bread with a crispy crust and light, airy interior',
+      title: 'Baguete Francesa',
+      description: 'Pão francês clássico com crosta crocante e interior leve e aerado',
       price: 'R$12,99',
-      category: 'Breads',
+      category: 'Pães',
       image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc7c?auto=format&fit=crop&q=80'
     },
     {
       id: 9,
-      title: 'Carrot Cake',
-      description: 'Moist carrot cake with cream cheese frosting and walnut decoration',
+      title: 'Bolo de Cenoura',
+      description: 'Bolo de cenoura úmido com cobertura de cream cheese e decoração de nozes',
       price: 'R$45,99',
-      category: 'Cakes',
+      category: 'Bolos',
       image: 'https://images.unsplash.com/photo-1566121933407-3c7ccdd26763?auto=format&fit=crop&q=80'
     },
   ];
 
-  // Filtered products
+  // Produtos filtrados
   const [filteredProducts, setFilteredProducts] = useState(allProducts);
 
-  // Simulate loading
+  // Simular carregamento
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -99,11 +99,11 @@ const Products = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Filter products based on category and search
+  // Filtrar produtos com base na categoria e busca
   useEffect(() => {
     let filtered = allProducts;
     
-    if (selectedCategory !== 'All') {
+    if (selectedCategory !== 'Todos') {
       filtered = filtered.filter(product => product.category === selectedCategory);
     }
     
@@ -129,17 +129,17 @@ const Products = () => {
             transition={{ duration: 0.7 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <h1 className="text-5xl font-display mb-6">Our Products</h1>
+            <h1 className="text-5xl font-display mb-6">Nossos Produtos</h1>
             <p className="text-lg text-white/80 mb-8">
-              Discover our wide range of freshly baked goods made with love and the finest ingredients.
-              From artisanal breads to decadent pastries, we have something for every taste.
+              Descubra nossa ampla variedade de produtos recém-assados feitos com amor e os melhores ingredientes.
+              De pães artesanais a doces decadentes, temos algo para todos os gostos.
             </p>
             
-            {/* Search Bar */}
+            {/* Barra de Busca */}
             <div className="relative max-w-md mx-auto">
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Buscar produtos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full px-5 py-3 pr-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/30"
@@ -150,10 +150,10 @@ const Products = () => {
         </div>
       </section>
       
-      {/* Products Section */}
+      {/* Seção de Produtos */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          {/* Categories Filter */}
+          {/* Filtro de Categorias */}
           <div className="mb-12 overflow-x-auto pb-4">
             <div className="flex space-x-2 min-w-max">
               {categories.map((category, index) => (
@@ -175,11 +175,11 @@ const Products = () => {
             </div>
           </div>
           
-          {/* Products Grid */}
+          {/* Grade de Produtos */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="wait">
               {isLoading ? (
-                // Loading skeletons
+                // Esqueletos de carregamento
                 Array.from({ length: 6 }).map((_, index) => (
                   <motion.div
                     key={`skeleton-${index}`}
@@ -208,6 +208,7 @@ const Products = () => {
                     layout
                   >
                     <ProductCard
+                      id={product.id}
                       image={product.image}
                       title={product.title}
                       description={product.description}
@@ -223,7 +224,7 @@ const Products = () => {
                   className="col-span-full text-center py-16"
                 >
                   <p className="text-xl text-muted-foreground">
-                    No products found matching your criteria.
+                    Nenhum produto encontrado com esses critérios.
                   </p>
                 </motion.div>
               )}
