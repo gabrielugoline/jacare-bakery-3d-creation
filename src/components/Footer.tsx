@@ -23,8 +23,8 @@ const Footer = () => {
               Jacaré <span className="text-bread-crumb">Padaria</span>
             </h2>
             <p className="text-primary-foreground/80 mb-6">
-              Artisanal bakery providing high-quality breads, pastries, and custom cakes 
-              made with traditional techniques and the finest ingredients.
+              Padaria artesanal oferecendo pães, doces e bolos personalizados de alta qualidade, 
+              feitos com técnicas tradicionais e os melhores ingredientes.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-bread-crumb transition-colors duration-200">
@@ -47,13 +47,13 @@ const Footer = () => {
             viewport={{ once: true }}
             className="col-span-1"
           >
-            <h3 className="text-xl font-serif mb-6">Quick Links</h3>
+            <h3 className="text-xl font-serif mb-6">Links Rápidos</h3>
             <ul className="space-y-4">
               {[
-                { title: 'Home', path: '/' },
-                { title: 'Products', path: '/products' },
-                { title: 'About Us', path: '/about' },
-                { title: 'Cake Builder', path: '/cake-builder' }
+                { title: 'Início', path: '/' },
+                { title: 'Produtos', path: '/products' },
+                { title: 'Sobre Nós', path: '/about' },
+                { title: 'Monte seu Bolo', path: '/cake-builder' }
               ].map((link) => (
                 <li key={link.path}>
                   <Link 
@@ -75,18 +75,18 @@ const Footer = () => {
             viewport={{ once: true }}
             className="col-span-1"
           >
-            <h3 className="text-xl font-serif mb-6">Opening Hours</h3>
+            <h3 className="text-xl font-serif mb-6">Horário de Funcionamento</h3>
             <ul className="space-y-4">
               <li className="flex justify-between">
-                <span className="text-primary-foreground/80">Monday - Friday</span>
+                <span className="text-primary-foreground/80">Segunda - Sexta</span>
                 <span>7:00 - 19:00</span>
               </li>
               <li className="flex justify-between">
-                <span className="text-primary-foreground/80">Saturday</span>
+                <span className="text-primary-foreground/80">Sábado</span>
                 <span>7:00 - 18:00</span>
               </li>
               <li className="flex justify-between">
-                <span className="text-primary-foreground/80">Sunday</span>
+                <span className="text-primary-foreground/80">Domingo</span>
                 <span>8:00 - 15:00</span>
               </li>
             </ul>
@@ -100,19 +100,19 @@ const Footer = () => {
             viewport={{ once: true }}
             className="col-span-1"
           >
-            <h3 className="text-xl font-serif mb-6">Contact Us</h3>
+            <h3 className="text-xl font-serif mb-6">Contato</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin size={20} className="flex-shrink-0 mt-1" />
-                <span className="text-primary-foreground/80">123 Bakery Street, São Paulo, Brazil</span>
+                <span className="text-primary-foreground/80">R. Inglaterra, 735 - Bairro da Glória, Contagem - MG, 32340-130</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={20} />
-                <span className="text-primary-foreground/80">+55 (11) 1234-5678</span>
+                <span className="text-primary-foreground/80">(31) 2567-6757</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={20} />
-                <span className="text-primary-foreground/80">contact@jacarepadaria.com</span>
+                <span className="text-primary-foreground/80">contato@jacarepadaria.com</span>
               </li>
             </ul>
           </motion.div>
@@ -125,7 +125,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="mt-16 pt-8 border-t border-primary-foreground/20 text-center text-primary-foreground/60"
         >
-          <p>&copy; {currentYear} Jacaré Padaria. All rights reserved.</p>
+          <p>&copy; {currentYear} Jacaré Padaria. Todos os direitos reservados.</p>
         </motion.div>
       </div>
     </footer>

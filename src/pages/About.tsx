@@ -10,32 +10,32 @@ const About = () => {
   const timeline = [
     {
       year: '1987',
-      title: 'The Beginning',
-      description: 'Jacaré Padaria was founded as a small family bakery in São Paulo.',
+      title: 'O Início',
+      description: 'A Jacaré Padaria foi fundada como uma pequena padaria familiar em Contagem.',
       image: 'https://images.unsplash.com/photo-1510741149781-d50bda7f6eb4?auto=format&fit=crop&q=80'
     },
     {
       year: '1995',
-      title: 'Expansion',
-      description: 'Due to popular demand, we expanded our operations and opened our signature store.',
+      title: 'Expansão',
+      description: 'Devido à grande demanda, expandimos nossas operações e abrimos nossa loja principal.',
       image: 'https://images.unsplash.com/photo-1518982380835-a3d9073a033d?auto=format&fit=crop&q=80'
     },
     {
       year: '2005',
-      title: 'Award Winning',
-      description: 'Recognized as the best local bakery in São Paulo, winning multiple awards.',
+      title: 'Premiação',
+      description: 'Reconhecida como a melhor padaria local em Contagem, ganhando múltiplos prêmios.',
       image: 'https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&q=80'
     },
     {
       year: '2015',
-      title: 'Innovation',
-      description: 'Introduced new artisanal techniques and expanded our product range.',
+      title: 'Inovação',
+      description: 'Introduzimos novas técnicas artesanais e expandimos nossa linha de produtos.',
       image: 'https://images.unsplash.com/photo-1536751048178-14a73ca468c4?auto=format&fit=crop&q=80'
     },
     {
-      year: 'Today',
-      title: 'Continuing the Tradition',
-      description: 'Still family-owned, we continue to serve our community with the same dedication and quality.',
+      year: 'Hoje',
+      title: 'Continuando a Tradição',
+      description: 'Ainda uma empresa familiar, continuamos a servir nossa comunidade com a mesma dedicação e qualidade.',
       image: 'https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?auto=format&fit=crop&q=80'
     }
   ];
@@ -43,21 +43,21 @@ const About = () => {
   const team = [
     {
       name: 'Carlos Almeida',
-      role: 'Master Baker & Founder',
+      role: 'Mestre Padeiro & Fundador',
       image: 'https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&q=80',
-      bio: 'With over 35 years of baking experience, Carlos founded Jacaré Padaria with a vision of bringing traditional baking to the neighborhood.'
+      bio: 'Com mais de 35 anos de experiência em panificação, Carlos fundou a Jacaré Padaria com a visão de trazer panificação tradicional para o bairro.'
     },
     {
       name: 'Ana Silva',
-      role: 'Head Pastry Chef',
+      role: 'Chef de Confeitaria',
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
-      bio: 'Ana has been crafting exquisite pastries for 15 years and leads our pastry innovation with creativity and precision.'
+      bio: 'Ana está criando doces requintados há 15 anos e lidera nossa inovação em confeitaria com criatividade e precisão.'
     },
     {
       name: 'Miguel Santos',
-      role: 'Cake Specialist',
+      role: 'Especialista em Bolos',
       image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80',
-      bio: 'Miguel specializes in creating stunning custom cakes for all occasions, combining artistry with delicious flavors.'
+      bio: 'Miguel se especializa em criar bolos personalizados deslumbrantes para todas as ocasiões, combinando arte com sabores deliciosos.'
     },
   ];
 
@@ -68,7 +68,7 @@ const About = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1525858097-9f4e1eba2981?auto=format&fit=crop&q=80" 
-            alt="Bakery background" 
+            alt="Fundo da padaria" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70" />
@@ -81,10 +81,10 @@ const About = () => {
             transition={{ duration: 0.7 }}
             className="max-w-2xl text-white"
           >
-            <h1 className="text-5xl font-display mb-6">Our Story</h1>
+            <h1 className="text-5xl font-display mb-6">Nossa História</h1>
             <p className="text-xl text-white/90 mb-6">
-              For over 35 years, Jacaré Padaria has been a cornerstone of our community, 
-              providing delicious baked goods made with love and tradition.
+              Por mais de 35 anos, a Jacaré Padaria tem sido um pilar da nossa comunidade, 
+              fornecendo deliciosos produtos de panificação feitos com amor e tradição.
             </p>
             <div className="flex flex-wrap gap-6 mt-12">
               <div className="flex items-center space-x-3">
@@ -92,8 +92,8 @@ const About = () => {
                   <Clock className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">Established</p>
-                  <p className="text-white font-medium">Since 1987</p>
+                  <p className="text-white/80 text-sm">Estabelecida</p>
+                  <p className="text-white font-medium">Desde 1987</p>
                 </div>
               </div>
               
@@ -102,8 +102,8 @@ const About = () => {
                   <Award className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">Awards</p>
-                  <p className="text-white font-medium">12+ Recognitions</p>
+                  <p className="text-white/80 text-sm">Prêmios</p>
+                  <p className="text-white font-medium">12+ Reconhecimentos</p>
                 </div>
               </div>
               
@@ -112,8 +112,8 @@ const About = () => {
                   <Users className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-white/80 text-sm">Team</p>
-                  <p className="text-white font-medium">15+ Expert Bakers</p>
+                  <p className="text-white/80 text-sm">Equipe</p>
+                  <p className="text-white font-medium">15+ Padeiros Experientes</p>
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Our Mission */}
+      {/* Nossa Missão */}
       <section className="py-24 bg-cream">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -132,20 +132,20 @@ const About = () => {
               viewport={{ once: true }}
             >
               <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-secondary text-primary font-medium text-sm">
-                Our Mission
+                Nossa Missão
               </span>
               <h2 className="text-4xl font-serif mb-6">
-                Bringing Joy Through <br/>Traditional Baking
+                Trazendo Alegria Através <br/>da Panificação Tradicional
               </h2>
               <p className="text-muted-foreground mb-6">
-                At Jacaré Padaria, our mission is to preserve and share the art of traditional 
-                baking. We believe that well-crafted bread and pastries can bring joy and 
-                create meaningful connections in our community.
+                Na Jacaré Padaria, nossa missão é preservar e compartilhar a arte da 
+                panificação tradicional. Acreditamos que pães e doces bem elaborados podem trazer 
+                alegria e criar conexões significativas em nossa comunidade.
               </p>
               <p className="text-muted-foreground mb-6">
-                We are committed to using time-honored techniques, the finest ingredients, 
-                and avoiding artificial preservatives or additives. Each product that leaves 
-                our bakery is made with care, expertise, and a deep respect for tradition.
+                Estamos comprometidos em usar técnicas consagradas pelo tempo, os melhores ingredientes, 
+                e evitar conservantes artificiais ou aditivos. Cada produto que sai da nossa 
+                padaria é feito com cuidado, expertise e um profundo respeito pela tradição.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
@@ -153,8 +153,8 @@ const About = () => {
                     <Cake className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium mb-1">Traditional Methods</h3>
-                    <p className="text-muted-foreground">We preserve traditional baking techniques that have been perfected over generations.</p>
+                    <h3 className="text-lg font-medium mb-1">Métodos Tradicionais</h3>
+                    <p className="text-muted-foreground">Preservamos técnicas de panificação tradicional que foram aperfeiçoadas ao longo de gerações.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -162,8 +162,8 @@ const About = () => {
                     <Cake className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium mb-1">Quality Ingredients</h3>
-                    <p className="text-muted-foreground">We source the finest ingredients to ensure exceptional flavor and quality in every bite.</p>
+                    <h3 className="text-lg font-medium mb-1">Ingredientes de Qualidade</h3>
+                    <p className="text-muted-foreground">Selecionamos os melhores ingredientes para garantir sabor e qualidade excepcionais em cada mordida.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -171,8 +171,8 @@ const About = () => {
                     <Cake className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium mb-1">Community Connection</h3>
-                    <p className="text-muted-foreground">We aim to be more than a bakery - we're a gathering place for the community we serve.</p>
+                    <h3 className="text-lg font-medium mb-1">Conexão com a Comunidade</h3>
+                    <p className="text-muted-foreground">Buscamos ser mais que uma padaria - somos um ponto de encontro para a comunidade que servimos.</p>
                   </div>
                 </div>
               </div>
@@ -188,28 +188,28 @@ const About = () => {
                 <div className="aspect-[3/4] rounded-lg overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1551500189-f9cd88d65330?auto=format&fit=crop&q=80" 
-                    alt="Bakery interior" 
+                    alt="Interior da padaria" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="aspect-[3/4] rounded-lg overflow-hidden mt-8">
                   <img 
                     src="https://images.unsplash.com/photo-1589985270958-354cf050755d?auto=format&fit=crop&q=80" 
-                    alt="Fresh bread" 
+                    alt="Pão fresco" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="aspect-[3/4] rounded-lg overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1541599188778-cdc73298e8fd?auto=format&fit=crop&q=80" 
-                    alt="Baker kneading dough" 
+                    alt="Padeiro amassando massa" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="aspect-[3/4] rounded-lg overflow-hidden mt-8">
                   <img 
                     src="https://images.unsplash.com/photo-1605186598843-80ef9d9c867f?auto=format&fit=crop&q=80" 
-                    alt="Fresh pastries" 
+                    alt="Doces frescos" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -219,17 +219,17 @@ const About = () => {
         </div>
       </section>
       
-      {/* Timeline */}
+      {/* Linha do tempo */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-xl mx-auto mb-16 reveal">
             <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-secondary text-primary font-medium text-sm">
-              Our Journey
+              Nossa Jornada
             </span>
-            <h2 className="text-4xl font-serif mb-6">From Small Beginnings</h2>
+            <h2 className="text-4xl font-serif mb-6">De Pequenos Começos</h2>
             <p className="text-muted-foreground">
-              Over three decades of passion, dedication, and commitment to quality baking.
-              Here's how our story unfolded.
+              Mais de três décadas de paixão, dedicação e compromisso com a panificação de qualidade.
+              Aqui está como nossa história se desenvolveu.
             </p>
           </div>
           
@@ -280,17 +280,17 @@ const About = () => {
         </div>
       </section>
       
-      {/* Team Section */}
+      {/* Seção da Equipe */}
       <section className="py-24 bg-cream">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-xl mx-auto mb-16 reveal">
             <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-secondary text-primary font-medium text-sm">
-              Our Team
+              Nossa Equipe
             </span>
-            <h2 className="text-4xl font-serif mb-6">Meet the Bakers</h2>
+            <h2 className="text-4xl font-serif mb-6">Conheça os Padeiros</h2>
             <p className="text-muted-foreground">
-              The skilled artisans behind our delicious products. Our team brings together
-              years of experience and a shared passion for exceptional baking.
+              Os artesãos habilidosos por trás dos nossos produtos deliciosos. Nossa equipe reúne
+              anos de experiência e uma paixão compartilhada pela panificação excepcional.
             </p>
           </div>
           
@@ -322,7 +322,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Location & Contact */}
+      {/* Localização e Contato */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -333,28 +333,28 @@ const About = () => {
               viewport={{ once: true }}
             >
               <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-secondary text-primary font-medium text-sm">
-                Visit Us
+                Visite-nos
               </span>
-              <h2 className="text-4xl font-serif mb-6">Find Our Bakery</h2>
+              <h2 className="text-4xl font-serif mb-6">Encontre Nossa Padaria</h2>
               <p className="text-muted-foreground mb-8">
-                We're conveniently located in the heart of São Paulo. Come visit us and experience 
-                the warm atmosphere, delightful aromas, and exceptional baked goods. 
+                Estamos convenientemente localizados no coração de Contagem. Venha nos visitar e experimente 
+                o ambiente acolhedor, os aromas deliciosos e os produtos de panificação excepcionais. 
               </p>
               
               <div className="space-y-6 mb-8">
                 <div className="flex items-start space-x-4">
                   <MapPin className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-medium mb-1">Address</h3>
-                    <p className="text-muted-foreground">123 Bakery Street, São Paulo, Brazil</p>
+                    <h3 className="font-medium mb-1">Endereço</h3>
+                    <p className="text-muted-foreground">R. Inglaterra, 735 - Bairro da Glória, Contagem - MG, 32340-130</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
                   <Phone className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-medium mb-1">Phone</h3>
-                    <p className="text-muted-foreground">+55 (11) 1234-5678</p>
+                    <h3 className="font-medium mb-1">Telefone</h3>
+                    <p className="text-muted-foreground">(31) 2567-6757</p>
                   </div>
                 </div>
                 
@@ -362,25 +362,25 @@ const About = () => {
                   <Mail className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-medium mb-1">Email</h3>
-                    <p className="text-muted-foreground">contact@jacarepadaria.com</p>
+                    <p className="text-muted-foreground">contato@jacarepadaria.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
                   <Clock className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-medium mb-1">Opening Hours</h3>
+                    <h3 className="font-medium mb-1">Horário de Funcionamento</h3>
                     <div className="text-muted-foreground">
-                      <p>Monday - Friday: 7:00 - 19:00</p>
-                      <p>Saturday: 7:00 - 18:00</p>
-                      <p>Sunday: 8:00 - 15:00</p>
+                      <p>Segunda - Sexta: 7:00 - 19:00</p>
+                      <p>Sábado: 7:00 - 18:00</p>
+                      <p>Domingo: 8:00 - 15:00</p>
                     </div>
                   </div>
                 </div>
               </div>
               
               <button className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors">
-                Get Directions
+                Como Chegar
               </button>
             </motion.div>
             
@@ -391,10 +391,10 @@ const About = () => {
               viewport={{ once: true }}
             >
               <div className="aspect-square rounded-xl overflow-hidden shadow-lg">
-                {/* Here you would typically embed a Google Map. For now, using a placeholder image */}
+                {/* Aqui normalmente seria incorporado um Mapa do Google. Por enquanto, usando uma imagem de espaço reservado */}
                 <img 
                   src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80" 
-                  alt="Bakery location" 
+                  alt="Localização da padaria" 
                   className="w-full h-full object-cover"
                 />
               </div>
