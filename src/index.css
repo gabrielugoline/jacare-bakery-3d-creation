@@ -91,11 +91,10 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
-}
 
-/* Font display utility class */
-.font-display {
-  font-family: 'Forum', serif;
+  .font-display {
+    font-family: 'Forum', serif;
+  }
 }
 
 /* Custom scrollbar */

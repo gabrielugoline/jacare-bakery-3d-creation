@@ -21,9 +21,20 @@ type ToppingProps = {
 };
 
 type CakeProps = {
-  layers: any[];
-  toppings: any[];
+  layers: {
+    level: number;
+    flavor: string;
+    height: number;
+  }[];
+  toppings: {
+    type: string;
+    position: [number, number, number];
+  }[];
   frosting: string;
+};
+
+type CakeCanvasProps = {
+  onSaveImage?: (imageData: string) => void;
 };
 
 // Cake Layer Component
@@ -42,7 +53,7 @@ const CakeLayer = ({ position, radius, height, color, texture }: CakeLayerProps)
       <cylinderGeometry args={[radius, radius, height, 64]} />
       <meshStandardMaterial 
         color={color} 
-        map={textureMap instanceof THREE.Texture ? textureMap : undefined} 
+        map={textureMap || undefined} 
         roughness={0.3} 
         metalness={0.1}
       />
@@ -88,20 +99,41 @@ const Cake = ({ layers, toppings, frosting }: CakeProps) => {
 };
 
 // CakeCanvas Component
-const CakeCanvas = () => {
+const CakeCanvas = ({ onSaveImage }: CakeCanvasProps) => {
+  // Implementação da função saveImage que pode ser chamada com um botão
+  const saveImage = () => {
+    if (onSaveImage) {
+      // Em uma implementação real, aqui capturaria a renderização 3D
+      // Por enquanto, estamos apenas simulando com uma string de dados de imagem
+      const mockImageData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
+      onSaveImage(mockImageData);
+    }
+  };
+  
   return (
-    <Cake 
-      layers={[
-        { level: 1, flavor: 'vanilla', height: 0.7 },
-        { level: 2, flavor: 'vanilla', height: 0.7 },
-        { level: 3, flavor: 'chocolate', height: 0.7 }
-      ]}
-      toppings={[
-        { type: 'cherry', position: [0.8, 2.2, 0] },
-        { type: 'sprinkles', position: [-0.7, 2.4, 0.5] },
-      ]}
-      frosting="buttercream"
-    />
+    <div className="relative w-full h-full">
+      <Cake 
+        layers={[
+          { level: 1, flavor: 'vanilla', height: 0.7 },
+          { level: 2, flavor: 'vanilla', height: 0.7 },
+          { level: 3, flavor: 'chocolate', height: 0.7 }
+        ]}
+        toppings={[
+          { type: 'cherry', position: [0.8, 2.2, 0] },
+          { type: 'sprinkles', position: [-0.7, 2.4, 0.5] },
+        ]}
+        frosting="buttercream"
+      />
+      
+      {onSaveImage && (
+        <button 
+          className="absolute bottom-4 right-4 px-4 py-2 bg-primary text-white rounded-md shadow-md hover:bg-primary/80 transition-colors"
+          onClick={saveImage}
+        >
+          Capturar Imagem
+        </button>
+      )}
+    </div>
   );
 };
 
