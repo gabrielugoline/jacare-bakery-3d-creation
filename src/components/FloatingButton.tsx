@@ -8,8 +8,8 @@ const FloatingButton = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   
-  // URL do áudio compartilhado
-  const audioUrl = "https://screenapp-io.s3.amazonaws.com/33e5fcfa-55f7-4d07-9e01-61d6b8a0e96e/audio-output.mp3";
+  // URL do áudio do Google Drive (convertida para formato direto)
+  const audioUrl = "https://drive.google.com/uc?export=download&id=1PEBv1_8Sy1dVO8Tg9UiXcc4VtzQqv7UZ";
 
   // Inicializar o áudio quando o componente for montado
   React.useEffect(() => {
