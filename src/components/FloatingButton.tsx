@@ -7,16 +7,20 @@ import { toast } from '@/components/ui/use-toast';
 const FloatingButton = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+  
+  // URL do áudio compartilhado
+  const audioUrl = "https://screenapp-io.s3.amazonaws.com/33e5fcfa-55f7-4d07-9e01-61d6b8a0e96e/audio-output.mp3";
 
   // Inicializar o áudio quando o componente for montado
   React.useEffect(() => {
-    const audioElement = new Audio('/welcome-message.mp3');
+    const audioElement = new Audio(audioUrl);
     
     audioElement.onended = () => {
       setIsPlaying(false);
     };
     
-    audioElement.onerror = () => {
+    audioElement.onerror = (e) => {
+      console.error('Erro ao carregar áudio:', e);
       toast({
         title: "Erro ao reproduzir áudio",
         description: "Não foi possível reproduzir a mensagem de boas-vindas.",
@@ -25,6 +29,8 @@ const FloatingButton = () => {
       setIsPlaying(false);
     };
     
+    // Pré-carregar o áudio
+    audioElement.load();
     setAudio(audioElement);
     
     // Limpar o áudio quando o componente for desmontado
@@ -34,7 +40,7 @@ const FloatingButton = () => {
         audioElement.src = '';
       }
     };
-  }, []);
+  }, [audioUrl]);
 
   const togglePlay = () => {
     if (!audio) return;
@@ -63,7 +69,7 @@ const FloatingButton = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={togglePlay}
-      className="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-primary shadow-lg flex items-center justify-center text-white z-50"
+      className="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-primary shadow-lg flex items-center justify-center text-white z-50 relative"
       aria-label={isPlaying ? "Pausar assistente de voz" : "Ouvir assistente de voz"}
     >
       {isPlaying ? <Pause size={28} /> : <Play size={28} />}
