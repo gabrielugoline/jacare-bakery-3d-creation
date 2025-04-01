@@ -15,6 +15,7 @@ import TransitionEffect from "./components/TransitionEffect";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { CartProvider } from "./contexts/CartContext";
+import FloatingButton from "./components/FloatingButton";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </TransitionEffect>
+          <FloatingButton />
           <Footer />
         </BrowserRouter>
       </CartProvider>
