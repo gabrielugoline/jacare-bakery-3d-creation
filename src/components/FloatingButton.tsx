@@ -3,26 +3,34 @@ import React, { useState, useRef } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from '@/components/ui/use-toast';
+import { Button } from '@/components/ui/button';
 
 const FloatingButton = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
-  // URL do áudio do Google Drive (convertida para formato direto)
-  const audioUrl = "https://drive.google.com/uc?export=download&id=1PEBv1_8Sy1dVO8Tg9UiXcc4VtzQqv7UZ";
+  // Use a direct MP3 file URL instead of Google Drive
+  // If you need to use Google Drive, you need proper access permissions
+  // This is a backup approach using a different method to access the file
+  const audioUrl = "https://docs.google.com/uc?export=open&id=1PEBv1_8Sy1dVO8Tg9UiXcc4VtzQqv7UZ";
 
-  // Inicializa o áudio quando o botão é clicado pela primeira vez
   const initializeAudio = () => {
     if (!audioRef.current) {
+      console.log("Initializing audio player");
       const audio = new Audio();
-      audio.src = audioUrl;
+      
+      // Setting up event listeners before setting source
+      audio.oncanplaythrough = () => {
+        console.log("Audio can play through");
+      };
       
       audio.onended = () => {
+        console.log("Audio playback ended");
         setIsPlaying(false);
       };
       
       audio.onerror = (e) => {
-        console.error('Erro ao reproduzir áudio:', e);
+        console.error('Error playing audio:', e);
         toast({
           title: "Erro ao reproduzir áudio",
           description: "Não foi possível reproduzir a mensagem de boas-vindas.",
@@ -31,36 +39,54 @@ const FloatingButton = () => {
         setIsPlaying(false);
       };
       
+      // Set source after attaching listeners
+      audio.src = audioUrl;
       audioRef.current = audio;
     }
   };
 
   const togglePlay = () => {
+    console.log("Button clicked, toggling play state");
+    // Initialize audio on first click
     initializeAudio();
     
-    if (!audioRef.current) return;
+    if (!audioRef.current) {
+      console.error("Audio element not initialized");
+      return;
+    }
     
     if (isPlaying) {
+      console.log("Pausing audio");
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       setIsPlaying(false);
     } else {
-      // Tenta reproduzir o áudio apenas quando o botão é clicado
-      audioRef.current.play().catch(error => {
-        console.error('Erro ao reproduzir áudio:', error);
-        toast({
-          title: "Erro ao reproduzir áudio",
-          description: "Não foi possível reproduzir a mensagem de boas-vindas.",
-          variant: "destructive",
-        });
-      });
-      setIsPlaying(true);
+      console.log("Attempting to play audio");
+      const playPromise = audioRef.current.play();
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log("Audio started playing successfully");
+            setIsPlaying(true);
+          })
+          .catch(error => {
+            console.error('Error playing audio:', error);
+            toast({
+              title: "Erro ao reproduzir áudio",
+              description: "Não foi possível reproduzir a mensagem de boas-vindas.",
+              variant: "destructive",
+            });
+            setIsPlaying(false);
+          });
+      }
     }
   };
 
-  // Limpa o áudio quando o componente é desmontado
+  // Cleanup on unmount
   React.useEffect(() => {
     return () => {
+      console.log("Cleaning up audio resources");
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = '';
