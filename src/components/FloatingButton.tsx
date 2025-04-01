@@ -1,55 +1,52 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from '@/components/ui/use-toast';
 
 const FloatingButton = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   
   // URL do áudio do Google Drive (convertida para formato direto)
   const audioUrl = "https://drive.google.com/uc?export=download&id=1PEBv1_8Sy1dVO8Tg9UiXcc4VtzQqv7UZ";
 
-  // Inicializar o áudio quando o componente for montado
-  React.useEffect(() => {
-    const audioElement = new Audio(audioUrl);
-    
-    audioElement.onended = () => {
-      setIsPlaying(false);
-    };
-    
-    audioElement.onerror = (e) => {
-      console.error('Erro ao carregar áudio:', e);
-      toast({
-        title: "Erro ao reproduzir áudio",
-        description: "Não foi possível reproduzir a mensagem de boas-vindas.",
-        variant: "destructive",
-      });
-      setIsPlaying(false);
-    };
-    
-    // Pré-carregar o áudio
-    audioElement.load();
-    setAudio(audioElement);
-    
-    // Limpar o áudio quando o componente for desmontado
-    return () => {
-      if (audioElement) {
-        audioElement.pause();
-        audioElement.src = '';
-      }
-    };
-  }, [audioUrl]);
+  // Inicializa o áudio quando o botão é clicado pela primeira vez
+  const initializeAudio = () => {
+    if (!audioRef.current) {
+      const audio = new Audio();
+      audio.src = audioUrl;
+      
+      audio.onended = () => {
+        setIsPlaying(false);
+      };
+      
+      audio.onerror = (e) => {
+        console.error('Erro ao reproduzir áudio:', e);
+        toast({
+          title: "Erro ao reproduzir áudio",
+          description: "Não foi possível reproduzir a mensagem de boas-vindas.",
+          variant: "destructive",
+        });
+        setIsPlaying(false);
+      };
+      
+      audioRef.current = audio;
+    }
+  };
 
   const togglePlay = () => {
-    if (!audio) return;
+    initializeAudio();
+    
+    if (!audioRef.current) return;
     
     if (isPlaying) {
-      audio.pause();
-      audio.currentTime = 0;
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
     } else {
-      audio.play().catch(error => {
+      // Tenta reproduzir o áudio apenas quando o botão é clicado
+      audioRef.current.play().catch(error => {
         console.error('Erro ao reproduzir áudio:', error);
         toast({
           title: "Erro ao reproduzir áudio",
@@ -57,10 +54,20 @@ const FloatingButton = () => {
           variant: "destructive",
         });
       });
+      setIsPlaying(true);
     }
-    
-    setIsPlaying(!isPlaying);
   };
+
+  // Limpa o áudio quando o componente é desmontado
+  React.useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = '';
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <motion.button
