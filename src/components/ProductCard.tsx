@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Plus } from 'lucide-react';
@@ -23,8 +22,7 @@ const ProductCard = ({ id = Math.floor(Math.random() * 1000), image, title, desc
       image, 
       title, 
       price, 
-      category, 
-      quantity: 1 
+      category
     });
     
     toast({
